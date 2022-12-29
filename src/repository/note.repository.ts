@@ -12,18 +12,30 @@ class NoteRepository {
   }
 
   public async add(note: Note): Promise<Note> {
-    const notes = new Notes(note);
-    await notes.save();
+    try {
+      const notes = new Notes(note);
+      await notes.save();
 
-    return notes;
+      return notes;
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
   }
 
   public async update(note: Note, query: any): Promise<Note> {
-    const update = {
-      $set: note
+    try {
+      const update = {
+        $set: note
+      }
+      const result = await Notes.findOneAndUpdate(query, update, { new: true });
+      if (!result) {
+        throw new Error('Note not found');
+      }
+
+      return note;
+    } catch (error: any) {
+      throw new Error(error.message);
     }
-    await Notes.findOneAndUpdate(query, update);
-    return note;
   }
 
   public async deleteById(id: string): Promise<boolean> {

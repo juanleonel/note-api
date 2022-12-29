@@ -16,9 +16,9 @@ class NoteController {
         item: result,
         NOTES_ARRAY: 'NOTES_ARRAY'
       })
-    } catch (error) {
+    } catch (error: any) {
       res.status(500).send({
-        ERROR: error
+        ERROR: error.message
       });
     }
   }
@@ -30,9 +30,9 @@ class NoteController {
         item: result,
         NOTES_ARRAY: 'NOTES_ARRAY'
       })
-    } catch (error) {
+    } catch (error: any) {
       res.status(500).send({
-        ERROR: error
+        ERROR: error.message
       });
     }
   }
@@ -45,9 +45,9 @@ class NoteController {
         item: result,
         NOTE_CREATED: 'NOTE_CREATED'
       })
-    } catch (error) {
+    } catch (error: any) {
       res.status(500).send({
-        ERROR: error
+        ERROR: error.message
       });
     }
   }
@@ -61,9 +61,9 @@ class NoteController {
         item: result,
         NOTE_UPDATED: 'NOTE_UPDATED'
       })
-    } catch (error) {
+    } catch (error: any) {
       res.status(500).send({
-        ERROR: error
+        ERROR: error.message
       });
     }
   }
@@ -76,9 +76,9 @@ class NoteController {
         item: result,
         NOTE_DELETE: 'NOTE_DELETE'
       })
-    } catch (error) {
+    } catch (error: any) {
       res.status(500).send({
-        ERROR: error
+        ERROR: error.message
       });
     }
   }
