@@ -1,17 +1,17 @@
 import mongoose from "mongoose";
 
-const URL = 'mongodb://localhost:27017/notes'
+const DB_URL = process.env.DB_URL ?? 'mongodb://localhost:27017/notes'
 
-const DB = async () => {
-  mongoose.connect(URL);
+const MongooseDB = async () => {
+  mongoose.connect(DB_URL);
 }
 
 mongoose.connection.on('connected', () => {
-  console.log('Mongoose connected to: ' + URL);
+  console.log('Mongoose connected to: ' + DB_URL);
 })
 
 mongoose.connection.on('error', () => {
-  console.log('Mongoose connection error: ' + URL);
+  console.log('Mongoose connection error: ' + DB_URL);
 })
 
 mongoose.connection.on('disconnected', () => {
@@ -37,4 +37,4 @@ const graceFullShutDown = (msg: string, callback: any) => {
   })
 }
 
-export default DB;
+export default MongooseDB;

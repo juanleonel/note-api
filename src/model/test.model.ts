@@ -1,5 +1,5 @@
 import { Schema, model, connect } from "mongoose";
-import { Test } from "./test";
+import { Test } from "../interfaces/test";
 
 const testSchema = new Schema<Test>({
   thing: {
