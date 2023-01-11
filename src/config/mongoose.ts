@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import { CONFIGURATIONS } from './configurations';
 
-const DB_URL = process.env.DB_URL ?? 'mongodb://localhost:27017/notes'
+const DB_URL = CONFIGURATIONS.DB_URL
 
 const MongooseDB = async () => {
   mongoose.connect(DB_URL);
