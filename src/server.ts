@@ -1,6 +1,11 @@
-import App from "./app";
-const portNumber = process.env.PORT ? Number(process.env.PORT) : 8080;
+import App from './app';
+import { CONFIGURATIONS } from './config/configurations';
 
-App.app.listen(portNumber, 'localhost', () => {
+const portNumber =
+  typeof CONFIGURATIONS.PORT_DEFUALT === 'string'
+  ? parseInt(CONFIGURATIONS.PORT_DEFUALT)
+  : CONFIGURATIONS.PORT_DEFUALT;
+
+App.app.listen(portNumber, CONFIGURATIONS.HOST_NAME, () => {
   console.log('Listen on localhost:' + portNumber);
 });
